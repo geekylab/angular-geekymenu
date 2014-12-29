@@ -1,16 +1,24 @@
 {
-  "name": "angular-geekymenu",
-  "version": "0.0.1",
-  "authors": [
-    "johna1203 <johnathan@kodokuman.com>"
-  ],
-  "main": "src/angular-geekymenu.js",
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+	"name": "angular-geekymenu",
+	"version": "1.0.0",
+	"authors": [
+		"johna1203"
+	],
+	"description": "",
+	"keywords": [
+		""
+	],
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"angular":"~1.2.0"
+	},
+	"devDependencies": {
+	}
 }
