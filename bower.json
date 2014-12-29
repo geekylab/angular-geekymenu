@@ -1,0 +1,16 @@
+{
+  "name": "angular-geekymenu",
+  "version": "0.0.1",
+  "authors": [
+    "johna1203 <johnathan@kodokuman.com>"
+  ],
+  "main": "src/angular-geekymenu.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
