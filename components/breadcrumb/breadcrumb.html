@@ -1,0 +1,8 @@
+<ul class="page-breadcrumb">
+    <li ng-repeat="item in items">
+        <i class="fa fa-{{item.icon}}" ng-show="item.icon"></i>
+        <a href="{{item.link}}" ng-show="item.link">{{item.title}}</a>
+        <span ng-hide="item.link" style="font-weight: bold">{{item.title}}</span>
+        <i class="fa fa-angle-right" ng-show="$index < (items.length - 1)"></i>
+    </li>
+</ul>

@@ -1,0 +1,85 @@
+<div class="page-header navbar navbar-fixed-top">
+    <div class="page-header-inner container">
+        <div class="page-logo">
+            <a href="/">
+                <img src="assets/images/logo-default.png" alt="logo" class="logo-default"/>
+            </a>
+
+            <div class="menu-toggler sidebar-toggler">
+                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+            </div>
+        </div>
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
+           data-target=".navbar-collapse">
+        </a>
+
+        <div class="page-top">
+            <form class="search-form search-form-expanded hide" action="extra_search.html" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." name="query">
+                <span class="input-group-btn">
+                <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+                </span>
+                </div>
+            </form>
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}">
+                        <a href="/signup">{{"Sign up"|translate}}</a>
+                    </li>
+                    <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">{{"Login"|translate}}</a>
+                    </li>
+                    <li class="dropdown dropdown-extended dropdown-notification" ng-show="isLoggedIn()">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                           data-close-others="true">
+                            <i class="icon-bell"></i>
+                            <span class="badge badge-default">{{notifications.length}} </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="external">
+                                <h3><span class="bold">{{notifications.length}} pending</span> notifications</h3>
+                                <a href="#">view all</a>
+                            </li>
+                            <li>
+                                <ul class="dropdown-menu-list scroller" style="height: 250px;"
+                                    data-handle-color="#637283">
+                                    <li ng-repeat="notification in notifications">
+                                        <a ng-href="{{notification.link}}">
+                                            <span class="time">{{notification.created|date:'medium'}}</span>
+                                        <span class="details">
+                                        <span class="label label-sm label-icon label-success">
+                                        <i class="fa fa-plus"></i>
+                                        </span>
+                                        {{notification.title}} </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown dropdown-user" ng-show="isLoggedIn()">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                           data-close-others="true">
+                            <img alt="" class="img-circle" ng-src="{{getCurrentUser().picture}}"/>
+                            <span class="username username-hide-on-mobile">{{ getCurrentUser().name }} </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-default">
+                            <li ng-show="isLoggedIn()" ng-class="{active: isActive('/dashboard')}">
+                                <a href="/dashboard"><i class="fa fa-home"></i> Dashboard</a>
+                            </li>
+                            <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}">
+                                <a href="/settings"><span class="glyphicon glyphicon-cog"></span> Settings</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href=""
+                                                                                                   ng-click="logout()"><i
+                                    class="icon-key"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

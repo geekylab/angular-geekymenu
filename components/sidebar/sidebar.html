@@ -1,0 +1,17 @@
+<div class="page-sidebar-wrapper">
+    <div class="page-sidebar navbar-collapse collapse">
+        <ul class="page-sidebar-menu page-sidebar-menu-hover-submenu " data-keep-expanded="false"
+            data-auto-scroll="true" data-slide-speed="200">
+            <li ng-repeat="item in menu"
+                ng-class="{active: isActive(item.link),start:$index == 0,last:$index == menu.length}"
+                ng-show="isShow(item.show)"
+                    >
+                <a ng-href="{{item.link}}">
+                    <i class="{{item.icon}}"></i>
+                    <span class="title">{{item.title}}</span>
+                    <span class="selected" ng-show="isActive(item.link)"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

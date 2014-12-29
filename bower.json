@@ -6,6 +6,10 @@
   ],
   "main": "src/angular-geekymenu.js",
   "license": "MIT",
+  "dependencies": {
+    "angular": ">=1.2.*",
+    "gl.geekymenu.auth": "./components/angular-geekymenu-auth/.git"
+  },
   "ignore": [
     "**/.*",
     "node_modules",

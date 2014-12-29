@@ -1,0 +1,10 @@
+.page-container {
+  > .global-alert {
+    position: fixed;
+    top: $header-height;
+    left: auto;
+    margin: auto;
+    width: 90%;
+    z-index: 9999999;
+  }
+}
