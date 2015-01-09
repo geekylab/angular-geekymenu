@@ -31,6 +31,11 @@ angular.module('gl.geekymenu')
         $scope.isActive = function (route) {
             return route === $location.path();
         };
+
+        $scope.isShowNotification = function (type, notification) {
+            return type == notification.type;
+        }
+
     }).directive('navbar', function () {
         return {
             templateUrl: 'components/navbar/navbar.html',

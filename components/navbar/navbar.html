@@ -29,7 +29,7 @@
                     </li>
                     <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">{{"Login"|translate}}</a>
                     </li>
-                    <li class="dropdown dropdown-extended dropdown-notification" ng-show="isLoggedIn()">
+                    <li class="dropdown dropdown-extended dropdown-inbox" ng-show="isLoggedIn()">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-close-others="true">
                             <i class="icon-bell"></i>
@@ -41,17 +41,29 @@
                                 <a href="#">view all</a>
                             </li>
                             <li>
-                                <ul class="dropdown-menu-list scroller" style="height: 250px;"
+                                <ul class="dropdown-menu-list scroller" style="height: 250px;overflow-y: scroll;"
                                     data-handle-color="#637283">
                                     <li ng-repeat="notification in notifications">
+
+
                                         <a ng-href="{{notification.link}}">
-                                            <span class="time">{{notification.created|date:'medium'}}</span>
-                                        <span class="details">
-                                        <span class="label label-sm label-icon label-success">
-                                        <i class="fa fa-plus"></i>
-                                        </span>
-                                        {{notification.title}} </span>
+                                            <span class="photo" ng-show="notification.image_link">
+                                                <img ng-src="{{notification.image_link}}" class="img-circle" alt=""/>
+                                            </span>
+                                            <span class="subject">
+                                                <span class="from">{{notification.title}} </span>
+                                                <span class="time">{{notification.created|date:'medium'}} </span>
+                                            </span>
+                                            <span class="message">
+                                                {{notification.sub_title}}
+                                            </span>
                                         </a>
+
+                                        <div class="btn-group btn-group-sm pull-right">
+                                            <button type="button" class="btn btn-success">Accept</button>
+                                            <button type="button" class="btn btn-danger">Reject</button>
+                                        </div>
+                                        <div class="clearfix"></div>
                                     </li>
                                 </ul>
                             </li>
