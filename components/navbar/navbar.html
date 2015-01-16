@@ -2,7 +2,8 @@
     <div class="page-header-inner container">
         <div class="page-logo">
             <a href="/">
-                <img src="assets/images/logo-default.png" alt="logo" class="logo-default"/>
+                <!--<img src="assets/images/logo-default.png" alt="logo" class="logo-default"/>-->
+                Japedi
             </a>
 
             <div class="menu-toggler sidebar-toggler">
@@ -43,15 +44,13 @@
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 250px;overflow-y: scroll;"
                                     data-handle-color="#637283">
-                                    <li ng-repeat="notification in notifications">
-
-
+                                    <li ng-repeat="notification in notifications" ng-show="notification.status != 1234">
                                         <a ng-href="{{notification.link}}">
                                             <span class="photo" ng-show="notification.image_link">
                                                 <img ng-src="{{notification.image_link}}" class="img-circle" alt=""/>
                                             </span>
                                             <span class="subject">
-                                                <span class="from">{{notification.title}} </span>
+                                                <span class="from">{{notification.title}} {{notification.status}}</span>
                                                 <span class="time">{{notification.created|date:'medium'}} </span>
                                             </span>
                                             <span class="message">
@@ -59,9 +58,14 @@
                                             </span>
                                         </a>
 
-                                        <div class="btn-group btn-group-sm pull-right">
-                                            <button type="button" class="btn btn-success">Accept</button>
-                                            <button type="button" class="btn btn-danger">Reject</button>
+                                        <div class="btn-group btn-group-sm pull-right"
+                                             ng-show="isType('new:order', notification)">
+                                            <button type="button" class="btn btn-success"
+                                                    ng-click="accept(notification);$event.stopPropagation();">Accept
+                                            </button>
+                                            <button type="button" class="btn btn-danger"
+                                                    ng-click="reject(notification);$event.stopPropagation();">Reject
+                                            </button>
                                         </div>
                                         <div class="clearfix"></div>
                                     </li>

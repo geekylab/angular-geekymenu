@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gl.geekymenu')
-    .controller('NavbarCtrl', function ($scope, $location, Auth, Notification, socket) {
+    .controller('NavbarCtrl', function ($scope, $location, Auth, Notification, socket, Order) {
 
         var audio = new Audio("components/navbar/ｍp3/notification.mp3");
         $scope.menu = [{
@@ -10,7 +10,7 @@ angular.module('gl.geekymenu')
         }];
 
         $scope.notifications = [];
-        Notification.query({page: 1}, function (notifications) {
+        Notification.query({page: 1, status: 1}, function (notifications) {
             $scope.notifications = notifications;
             socket.syncUpdates('notification', $scope.notifications, true, function () {
                 audio.play();
@@ -32,8 +32,32 @@ angular.module('gl.geekymenu')
             return route === $location.path();
         };
 
-        $scope.isShowNotification = function (type, notification) {
+        $scope.isType = function (type, notification) {
             return type == notification.type;
+        }
+
+        $scope.accept = function (notification) {
+            Order.statusChange({id: notification.custom_id}, {
+                newStatus: 2
+            }, function () {
+                setNotificationRead(notification);
+            });
+        };
+
+        $scope.ignore = function (notification) {
+            Order.statusChange({id: notification.custom_id}, {
+                newStatus: 99
+            }, function () {
+                setNotificationRead(notification);
+            });
+        };
+
+        function setNotificationRead(notification) {
+            Notification.statusChange({id: notification._id}, {
+                newStatus: 1
+            }, function (newNotification) {
+                notification = newNotification;
+            });
         }
 
     }).directive('navbar', function () {
