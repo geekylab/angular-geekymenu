@@ -11,6 +11,12 @@ angular.module('gl.geekymenu')
                     params: {
                         controller: 'status'
                     }
+                },
+                payment: {
+                    method: 'GET',
+                    params: {
+                        controller: 'payment'
+                    }
                 }
             });
     });

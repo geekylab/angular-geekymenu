@@ -6,6 +6,7 @@ angular.module('cloud2App')
         return {
             ORDER_STATUS_AUTHENTICATION_WAITING: 1,
             ORDER_STATUS_AUTHENTICATED: 2,
+            ORDER_STATUS_CLOSED: 3,
             ORDER_STATUS_REJECTED: 99,
 
             ITEM_STATUS_MAKING: 1,
